@@ -1,8 +1,15 @@
+// https://www.mokesciu-sufleris.lt/skaiciuokle-darbo-uzmokestis-2022-01-01.html
 export const NPD = {
   standardNPD: 0,
   noNPD: 0,
   individualUpTo25NPD: 870,
   individualUpTo55NPD: 810,
+};
+
+export const employerSodra = {
+  doNotAccumulate: 19.5,
+  collectsConstantly: 22.2,
+  collectsAdditional: 22.5,
 };
 
 export const contractType = {
@@ -15,6 +22,21 @@ export const contractType = {
       proffUnion: 1.61,
       religious: 1.61,
     },
+
+    calculategroup1(salary) {
+      const employer = (salary * this.group1.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group1.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group1.ltBank / 100).toFixed(2)
+      const other = (salary * this.group1.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
+    },
+
     group2: {
       employer: 2.1,
       budgetInstitution: 1.78,
@@ -22,6 +44,20 @@ export const contractType = {
       politicalUnion: 1.94,
       proffUnion: 1.94,
       religious: 1.94,
+    },
+
+    calculategroup2(salary) {
+      const employer = (salary * this.group2.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group2.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group2.ltBank / 100).toFixed(2)
+      const other = (salary * this.group2.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
     },
     group3: {
       employer: 2.33,
@@ -31,6 +67,20 @@ export const contractType = {
       proffUnion: 2.17,
       religious: 2.17,
     },
+
+    calculategroup3(salary) {
+      const employer = (salary * this.group3.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group3.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group3.ltBank / 100).toFixed(2)
+      const other = (salary * this.group3.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
+    },
     group4: {
       employer: 3.03,
       budgetInstitution: 2.71,
@@ -38,6 +88,20 @@ export const contractType = {
       politicalUnion: 2.87,
       proffUnion: 2.87,
       religious: 2.87,
+    },
+
+    calculateGroup4(salary) {
+      const employer = (salary * this.group4.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group4.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group4.ltBank / 100).toFixed(2)
+      const other = (salary * this.group4.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
     },
   },
 
@@ -50,6 +114,20 @@ export const contractType = {
       proffUnion: 2.33,
       religious: 2.33,
     },
+
+    calculategroup1(salary) {
+      const employer = (salary * this.group1.employer / 100).toFixed(2)
+      const budgetInst = (salary * this.group1.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group1.ltBank / 100).toFixed(2)
+      const other = (salary * this.group1.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
+    },
     group2: {
       employer: 2.82,
       budgetInstitution: 2.5,
@@ -57,6 +135,20 @@ export const contractType = {
       politicalUnion: 2.66,
       proffUnion: 2.66,
       religious: 2.66,
+    },
+
+    calculategroup2(salary) {
+      const employer = (salary * this.group2.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group2.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group2.ltBank / 100).toFixed(2)
+      const other = (salary * this.group2.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
     },
     group3: {
       employer: 3.05,
@@ -66,6 +158,20 @@ export const contractType = {
       proffUnion: 2.89,
       religious: 2.89,
     },
+
+    calculategroup3(salary) {
+      const employer = (salary * this.group3.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group3.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group3.ltBank / 100).toFixed(2)
+      const other = (salary * this.group3.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
+    },
     group4: {
       employer: 3.75,
       budgetInstitution: 3.43,
@@ -74,35 +180,20 @@ export const contractType = {
       proffUnion: 3.59,
       religious: 3.59,
     },
+
+    calculategroup4(salary) {
+      const employer = (salary * this.group4.employer /100).toFixed(2)
+      const budgetInst = (salary * this.group4.budgetInstitution / 100).toFixed(2)
+      const lithuanianBank = (salary * this.group4.ltBank / 100).toFixed(2)
+      const other = (salary * this.group4.politicalUnion / 100).toFixed(2)
+
+      return {
+        employer,
+        budgetInst,
+        lithuanianBank,
+        other
+      }
+    },
   },
 };
 
-export const employerSodra = {
-  doNotAccumulate: 19.5,
-  collectsConstantly: 22.2,
-  collectsAdditional: 22.5,
-};
-
-// Standartinis NPD = 460 - 0,26 x (1000,00(alga ant popieriaus) - 730) = 389,80€
-// NPD netaikomas: NPD = 0 €
-// NPD (iki 25% darbingumo lygis), todėl šiuo atveju: NPD = 740 €
-// NPD (nuo 30% iki 55% darbingumo lygis), todėl šiuo atveju NPD = 690 €.
-
-// GPM(Standartinis NPD) = (1000,00 - 389,80) x 20% = 122,04 €
-// GPM(Netaikomas NPD) = (1000,00 - 0) x 20% = 200 €
-// GPM(iki 25% darbingumo lygis NPD) = (1000,00 - 740,00) x 20% = 52,00 €
-// GPM = (1000,00 - 690,00) x 20% = 62,00 €
-
-// Darbuotojo Sodra = 1000,00 x 19,50% = 195,00 €
-
-// Darbdavio Sodra = 1000,00 x 1,77% = 17,70 € - PRIVATUS DARBDAVYS
-// Darbdavio Sodra = 1000,00 x 1,45% = 14,50 € - BIUDŽETINĖ ĮSTAIGA
-// Darbdavio Sodra = 1000,00 x 1,45% = 14,50 € - LIETUVOS BANKAS
-// Darbdavio Sodra = 1000,00 x 1,61% = 16,10 € - POLITINĖ PARTIJA
-// Darbdavio Sodra = 1000,00 x 1,61% = 16,10 € - PROFESINĖ SAJUNGA
-// Darbdavio Sodra = 1000,00 x 1,61% = 16,10 € - RELIGINĖ BENDRUOMENĖ AR BENDRIJA
-
-//   ************Standartinis NPD************
-// Standartinis NPD = 460 - 0,26 x (1000,00(alga ant popieriaus) - 730) = 389,80€
-// PRIVATUS DARBDAVYS Darbdavio Sodra = 1000,00 x 1,77% = 17,70 €
-// NEKAUPIA Darbuotojo Sodra = 1000,00 x 19,50% = 195,00 €

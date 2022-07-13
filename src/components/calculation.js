@@ -1,7 +1,7 @@
 import { contractType, employerSodra, NPD } from "./data";
 
 // NPD iR GPM
-export function standardNPD(salary) {
+function standardNPD(salary) {
   salary <= +1704 ? (NPD.standardNPD = 540) : (NPD.standardNPD = 400);
 
   const result =
@@ -13,34 +13,36 @@ export function standardNPD(salary) {
   return result;
 }
 
-export function calculateNPD(salary) {
-  const notApplicable = (salary * 20) / 100;
-  const individualNPD25 =
-    salary <= NPD.individualUpTo25NPD
-      ? +0
-      : ((salary - NPD.individualUpTo25NPD) * 20) / 100;
-  const individualNPD55 =
-    salary <= NPD.individualUpTo25NPD
-      ? +0
-      : ((salary - NPD.individualUpTo55NPD) * 20) / 100;
+function calculateNPD(salary) {
+  const GPM = (
+    salary >= +2865
+      ? ((salary - 0) * 20) / 100
+      : ((salary - standardNPD(salary)) * 20) / 100
+  ).toFixed(2);
 
+  const notApplicable = ((salary * 20) / 100).toFixed(2);
+
+  const individualNPD25 = (
+    salary <= NPD.individualUpTo25NPD
+      ? +0
+      : ((salary - NPD.individualUpTo25NPD) * 20) / 100
+  ).toFixed(2);
+
+  const individualNPD55 = (
+    salary <= NPD.individualUpTo25NPD
+      ? +0
+      : ((salary - NPD.individualUpTo55NPD) * 20) / 100
+  ).toFixed(2);
   return {
+    GPM,
     notApplicable,
     individualNPD25,
     individualNPD55,
   };
 }
 
-export function GPM(salary) {
-  const GPM =
-    salary >= +2865
-      ? ((salary - 0) * 20) / 100
-      : ((salary - standardNPD(salary)) * 20) / 100;
-  return GPM;
-}
-
 // DARBUOTOJO SODRA
-export function calculateSodra(salary) {
+function calculateSodra(salary) {
   const notAccumulating = (salary * employerSodra.doNotAccumulate) / 100;
   const accumulatingConstantly =
     (salary * employerSodra.collectsConstantly) / 100;
@@ -54,4 +56,11 @@ export function calculateSodra(salary) {
   };
 }
 
-// DARBDAVYS
+// Į rankas
+function calculateSalary(salary) {
+  const result =
+    (salary - calculateSodra(salary).notAccumulating - calculateNPD(salary).GPM).toFixed(2);
+  return result;
+}
+
+export { standardNPD, calculateNPD, calculateSodra, calculateSalary };
