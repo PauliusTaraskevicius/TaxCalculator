@@ -32,6 +32,11 @@ const TaxForm = () => {
     setSelectGroup(event.target.value)
   }
 
+  const checkNPD = (salary) => {
+    const check = salary <= 1704 && salary >=730 ? 540 - 0.34 * (salary - 730) : (salary < 730 ? 540 : 400 - 0.18 * (salary - 642))
+    return check
+  }
+
   let type = '0.00'
 
   // ***********NETERMINUOTA***********
@@ -165,11 +170,11 @@ const TaxForm = () => {
               <select
                 id="npd"
                 className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                value={gpm} onChange={(e) => setGPM(e.target.value)}
+                onChange={(e) => setGPM(e.target.value)}
               >
 
           
-                <option value={calculateNPD(salary).GPM}>Taikomas standartinis</option>
+                <option value={salary >= 2865 ? (((salary - 0) * 20) / 100).toFixed(2) : ((salary - checkNPD(salary)) * 20 / 100).toFixed(2)}>Taikomas standartinis</option>
                 <option value={calculateNPD(salary).notApplicable}>Netaikomas</option>
                 <option value={calculateNPD(salary).individualNPD25}>0 - 25% darbingumas</option>
                 <option value={calculateNPD(salary).individualNPD55}>30 - 55% darbingumas</option>
@@ -291,7 +296,7 @@ const TaxForm = () => {
           <td className="px-4 py-4">
             Gyventojų pajamų mokestis (tarifas 20%, pritaikytas NPD 0.00):
           </td>
-          <td className="px-4 py-4">{gpm}</td>
+          <td className="px-4 py-4">{gpm < 0 ? 0 : gpm}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200">
@@ -305,7 +310,7 @@ const TaxForm = () => {
           <td className="px-4 py-4">
             Mokėtinas atlyginimas atskaičius mokesčius (į rankas):
           </td>
-          <td className="px-4 py-4">{(salary - +type - pension - gpm).toFixed(2)}</td>
+          <td className="px-4 py-4">{(salary - pension - gpm).toFixed(2)}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200">

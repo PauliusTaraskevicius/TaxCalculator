@@ -10,6 +10,7 @@ function standardNPD(salary) {
       : NPD.standardNPD === 540
       ? NPD.standardNPD - 0.34 * (salary - 730)
       : NPD.standardNPD - 0.18 * (salary - 642);
+
   return result;
 }
 
@@ -58,8 +59,11 @@ function calculateSodra(salary) {
 
 // Į rankas
 function calculateSalary(salary) {
-  const result =
-    (salary - calculateSodra(salary).notAccumulating - calculateNPD(salary).GPM).toFixed(2);
+  const result = (
+    salary -
+    calculateSodra(salary).notAccumulating -
+    calculateNPD(salary).GPM
+  ).toFixed(2);
   return result;
 }
 
