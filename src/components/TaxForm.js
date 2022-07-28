@@ -2,13 +2,11 @@ import React from "react";
 
 import { useState } from "react";
 import { contractType } from "./data";
-import { calculateNPD,  calculateSodra  } from "./calculation";
+import { calculateNPD,  calculateSodra, checkNPD  } from "./calculation";
 
 const TaxForm = () => {
 
   const [salary, setSalary] = useState(0);
-  const [handSalary, setHandSalary] = useState(0);
-  const [workSpacePrice, setWorkSpacePrice] = useState(0);
 
   const [gpm, setGPM] = useState('Taikomas standartinis');
   const [pension, setPension] = useState('Nekaupia')
@@ -32,6 +30,11 @@ const TaxForm = () => {
   let type = null
   let gpmType = null
   let pensionType = null
+
+  // Sutrumpunti if blokus
+  // parasyti likusi teksta
+  // pahostinti demo
+  // kol nzn atvirkstinio skaiciavimo is neto i bruto padaryt blank field or text type 'i rankas' ir 'darbo vietos kaina'
 
   // ***********NETERMINUOTA***********
   if(contract === "Neterminuota" && employerType === "Privatus" && selectGroup === "I grupė") {
@@ -96,6 +99,7 @@ const TaxForm = () => {
     type = contractType.timedContract.calculategroup4(salary).other
   }
 
+
   // ***********Neapmokestinamas pajamų dydis***********
 
   if(gpm === 'Taikomas standartinis') {
@@ -119,7 +123,6 @@ const TaxForm = () => {
     pensionType = calculateSodra(salary).accumulatingAdditional
   }
 
-
   return (
     <>
       <div className="w-5/6 mx-auto bg-white p-16 border-2 shadow-xl mt-6">
@@ -128,7 +131,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="salary"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Ant popieriaus
               </label>
               <input
@@ -143,7 +146,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="salary_to_hand"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Į rankas
               </label>
               <input
@@ -152,14 +155,14 @@ const TaxForm = () => {
                 className="py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.00"
-                onChange={(e) => setHandSalary(parseInt(e.target.value))}
+                value={salary ? (salary - +pensionType - +gpmType).toFixed(2) : '0.00'}
               />
             </div>
 
             <div>
               <label
                 htmlFor="work_space_price"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2  px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Darbo vietos kaina
               </label>
               <input
@@ -168,13 +171,13 @@ const TaxForm = () => {
                 className="py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.00"
-                onChange={(e) => setWorkSpacePrice(parseInt(e.target.value))}
+                value={salary ? (salary + +type).toFixed(2) : '0.00'}
               />
             </div>
             <div>
               <label
                 htmlFor="npd"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Neapmokestinamas pajamų dydis
               </label>
               <select
@@ -191,7 +194,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="pension"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Papildomas pensijos kaupimas
               </label>
               <select
@@ -207,7 +210,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="contractType"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Sutarties tipas
               </label>
               <select
@@ -223,7 +226,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="employerType"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Darbdavio tipas
               </label>
               <select
@@ -243,7 +246,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="employerGroup"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Darbdavio grupė
               </label>
               <select
@@ -261,7 +264,7 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="years"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Metai
               </label>
@@ -286,47 +289,46 @@ const TaxForm = () => {
 
       {/* *************************RESULTS************************* */}
 
-      <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800 border-2 shadow-xl mb-8">
+      <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800 border-2 shadow-xl mt-6">
         <tr className="bg-gray-100 border-b border-gray-200">
           <td className="px-4 py-4">
             Atlyginimas neatskaičius mokesčių (ant popieriaus):
           </td>
-          <td className="px-4 py-4">{salary.toFixed(2)}</td>
+          <td className="px-4 py-4 text-right">{salary ? salary.toFixed(2) : '0.00'}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200">
           <td className="px-4 py-4">
-            Gyventojų pajamų mokestis (tarifas 20%, pritaikytas NPD 0.00):
+            Gyventojų pajamų mokestis (tarifas 20%, pritaikytas NPD {salary <= 539 ? salary + '.00' : checkNPD(salary)}):
           </td>
-          <td className="px-4 py-4">{+gpmType < 0 ? '0.00' : +gpmType}</td>
+          <td className="px-4 py-4 text-right">{+gpmType < 0 ? '0.00' : (salary ? (+gpmType).toFixed(2) : '0.00')}</td>
         </tr>
-
         <tr className="bg-gray-100 border-b border-gray-200">
           <td className="px-4 py-4">
             Darbuotojo soc.draudimo įmoka (tarifas 19.5%):
           </td>
-          <td className="px-4 py-4">{+pensionType ? +pensionType : '0.00'}</td>
+          <td className="px-4 py-4 text-right">{+pensionType ? (+pensionType).toFixed(2) : '0.00'}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200 font-bold">
           <td className="px-4 py-4">
             Mokėtinas atlyginimas atskaičius mokesčius (į rankas):
           </td>
-          <td className="px-4 py-4">{salary ? (salary - +pensionType - +gpmType).toFixed(2) : '0.00'}</td>
+          <td className="px-4 py-4 text-right">{salary <= 540 ? (salary - +pensionType).toFixed(2) : (salary ? (salary - +pensionType - +gpmType).toFixed(2) : '0.00')}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200">
           <td className="px-4 py-4">
             Darbdavio soc.draudimo įmoka (tarifas 1.77%):
           </td>
-          <td className="px-4 py-4">{+type ? +type : '0.00'}</td>
+          <td className="px-4 py-4 text-right">{+type ? (+type).toFixed(2) : '0.00'}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200">
           <td className="px-4 py-4">
             Darbo vietos kaina (darbdavio išlaidos):
           </td>
-          <td className="px-4 py-4">{salary ? salary + +type : '0.00'}</td>
+          <td className="px-4 py-4 text-right">{salary ? (salary + +type).toFixed(2) : '0.00'}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200 font-bold">
@@ -342,7 +344,7 @@ const TaxForm = () => {
             </a>
             ):
           </td>
-          <td className="px-4 py-4">{(+pensionType + +type).toFixed(2)}</td>
+          <td className="px-4 py-4 text-right">{salary ? (+pensionType + +type).toFixed(2) : '0.00'}</td>
         </tr>
 
         <tr className="bg-gray-100 border-b border-gray-200 font-bold">
@@ -358,7 +360,7 @@ const TaxForm = () => {
             </a>
             ):
           </td>
-          <td className="px-4 py-4">{+gpmType < 0 ? '0.00' : +gpmType}</td>
+          <td className="px-4 py-4 text-right">{+gpmType < 0 ? '0.00' : (salary ? (+gpmType).toFixed(2) : '0.00')}</td>
         </tr>
       </table>
     </>

@@ -1,8 +1,12 @@
-import { contractType, employerSodra, NPD } from "./data";
+import { employerSodra, NPD } from "./data";
+
 
 // NPD iR GPM
 function checkNPD(salary) {
-  const check =  salary <= 1704 && salary >=730 ? 540 - 0.34 * (salary - 730) : (salary < 730 ? 540 : 400 - 0.18 * (salary - 642))
+  const check =  (salary <= 1704 && salary >=730 ? 540 - 0.34 * (salary - 730) : (salary < 730 ? 540 : 400 - 0.18 * (salary - 642))).toFixed(2)
+
+  if(check < 0) return (0).toFixed(2)
+
   return check
 }
 
@@ -32,11 +36,11 @@ function calculateNPD(salary) {
 
 // DARBUOTOJO SODRA
 function calculateSodra(salary) {
-  const notAccumulating = (salary * employerSodra.doNotAccumulate) / 100;
+  const notAccumulating = ((salary * employerSodra.doNotAccumulate) / 100).toFixed(2);
   const accumulatingConstantly =
-    (salary * employerSodra.collectsConstantly) / 100;
+    ((salary * employerSodra.collectsConstantly) / 100).toFixed(2);
   const accumulatingAdditional =
-    (salary * employerSodra.collectsAdditional) / 100;
+    ((salary * employerSodra.collectsAdditional) / 100).toFixed(2);
 
   return {
     notAccumulating,

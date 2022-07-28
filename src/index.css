@@ -5,3 +5,11 @@
 body {
   margin: 0;
 }
+
+.facebook {
+  transition: transform .2s; 
+}
+
+.facebook:hover {
+  transform: scale(1.1); 
+}

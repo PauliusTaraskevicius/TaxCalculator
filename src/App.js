@@ -2,6 +2,8 @@ import './App.css';
 
 import Navigation from './components/Navigation';
 import TaxForm from './components/TaxForm';
+import Description from './components/Description';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <header className="App-header">
         <Navigation />
         <TaxForm />
+        <Description />
+        <Footer />
       </header>
     </div>
   );
