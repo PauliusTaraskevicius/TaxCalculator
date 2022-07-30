@@ -252,7 +252,9 @@ const TaxForm = () => {
                 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.00"
                 value={
-                  salary
+                  salary <= 540
+                    ? (salary - +pensionType).toFixed(2)
+                    : salary
                     ? (salary - +pensionType - +gpmType).toFixed(2)
                     : "0.00"
                 }
@@ -434,6 +436,7 @@ const TaxForm = () => {
             Mokėtinas atlyginimas atskaičius mokesčius (į rankas):
           </td>
           <td className="px-4 py-4 text-right">
+
             {salary <= 540
               ? (salary - +pensionType).toFixed(2)
               : salary
