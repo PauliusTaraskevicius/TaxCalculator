@@ -13,3 +13,11 @@ body {
 .facebook:hover {
   transform: scale(1.1); 
 }
+
+nav {
+  background: linear-gradient(-120deg, #003087, #009cde, #012169);
+}
+
+.footer {
+  background: linear-gradient(-120deg, #003087, #009cde, #012169)
+}

@@ -127,26 +127,6 @@ const Description = () => {
               metų sausio 1 dieną.
             </div>
           </div>
-
-          <div>
-            <div className="flex items-center justify-between text-slate-500">
-              <div className="flex space-x-4 md:space-x-8">
-                <div className="flex cursor-pointer items-center transition hover:text-slate-600">
-                  <a
-                    href="https://www.facebook.com/kaipuzsidirbti/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      className="facebook icow-8 h-8"
-                      src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-facebook-social-media-justicon-flat-justicon.png"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </>
