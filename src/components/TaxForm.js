@@ -32,7 +32,6 @@ const TaxForm = () => {
 
   // Sutrumpunti if blokus
   // kol nzn atvirkstinio skaiciavimo is neto i bruto padaryt blank field or text type 'i rankas' ir 'darbo vietos kaina'
-  // padaryti, kad priimtu float skaicius
   // "Atlyginimo skaičiuoklė 2022 metams" padaryti link i kaipuzsidirbti.lt
 
   // ***********NETERMINUOTA***********
