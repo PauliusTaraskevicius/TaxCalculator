@@ -31,9 +31,9 @@ const TaxForm = () => {
   let pensionType = null;
 
   // Sutrumpunti if blokus
-  // parasyti likusi teksta
-  // pahostinti demo
   // kol nzn atvirkstinio skaiciavimo is neto i bruto padaryt blank field or text type 'i rankas' ir 'darbo vietos kaina'
+  // padaryti, kad priimtu float skaicius
+  // "Atlyginimo skaičiuoklė 2022 metams" padaryti link i kaipuzsidirbti.lt
 
   // ***********NETERMINUOTA***********
   if (
@@ -235,7 +235,7 @@ const TaxForm = () => {
                 className="form-control py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.00"
-                onChange={(e) => setSalary(parseInt(e.target.value))}
+                onChange={(e) => setSalary(parseFloat(e.target.value))}
               />
             </div>
             <div>
@@ -436,7 +436,6 @@ const TaxForm = () => {
             Mokėtinas atlyginimas atskaičius mokesčius (į rankas):
           </td>
           <td className="px-4 py-4 text-right">
-
             {salary <= 540
               ? (salary - +pensionType).toFixed(2)
               : salary
