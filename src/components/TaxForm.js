@@ -1,8 +1,10 @@
 import React from "react";
 
+import Results from "./Results";
+
 import { useState } from "react";
 import { contractType } from "./data";
-import { calculateNPD, calculateSodra, checkNPD } from "./calculation";
+import { calculateNPD, calculateSodra } from "./calculation";
 
 const TaxForm = () => {
   const [salary, setSalary] = useState(0);
@@ -32,7 +34,7 @@ const TaxForm = () => {
 
   // Sutrumpunti if blokus
   // kol nzn atvirkstinio skaiciavimo is neto i bruto padaryt blank field or text type 'i rankas' ir 'darbo vietos kaina'
-  // "Atlyginimo skaičiuoklė 2022 metams" padaryti link i kaipuzsidirbti.lt
+  // pakeisti mobile spalvas
 
   // ***********NETERMINUOTA***********
   if (
@@ -245,9 +247,9 @@ const TaxForm = () => {
                 Į rankas
               </label>
               <input
-                type="number"
+                type="number hidden"
                 id="salary_to_hand"
-                className="py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
+                className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.00"
                 value={
@@ -268,9 +270,9 @@ const TaxForm = () => {
                 Darbo vietos kaina
               </label>
               <input
-                type="number"
+                type="number hidden"
                 id="work_space_price"
-                className="py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+                className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0.00"
                 value={salary ? (salary + +type).toFixed(2) : "0.00"}
@@ -402,101 +404,12 @@ const TaxForm = () => {
 
       {/* *************************RESULTS************************* */}
 
-      <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800 border-2 shadow-xl mt-6">
-        <tr className="bg-gray-100 border-b border-gray-200">
-          <td className="px-4 py-4">
-            Atlyginimas neatskaičius mokesčių (ant popieriaus):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {salary ? salary.toFixed(2) : "0.00"}
-          </td>
-        </tr>
-
-        <tr className="bg-gray-100 border-b border-gray-200">
-          <td className="px-4 py-4">
-            Gyventojų pajamų mokestis (tarifas 20%, pritaikytas NPD{" "}
-            {salary <= 539 ? salary + ".00" : checkNPD(salary)}):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {+gpmType < 0 ? "0.00" : salary ? (+gpmType).toFixed(2) : "0.00"}
-          </td>
-        </tr>
-        <tr className="bg-gray-100 border-b border-gray-200">
-          <td className="px-4 py-4">
-            Darbuotojo soc.draudimo įmoka (tarifas 19.5%):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {+pensionType ? (+pensionType).toFixed(2) : "0.00"}
-          </td>
-        </tr>
-
-        <tr className="bg-gray-100 border-b border-gray-200 font-bold">
-          <td className="px-4 py-4">
-            Mokėtinas atlyginimas atskaičius mokesčius (į rankas):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {salary <= 540
-              ? (salary - +pensionType).toFixed(2)
-              : salary
-              ? (salary - +pensionType - +gpmType).toFixed(2)
-              : "0.00"}
-          </td>
-        </tr>
-
-        <tr className="bg-gray-100 border-b border-gray-200">
-          <td className="px-4 py-4">
-            Darbdavio soc.draudimo įmoka (tarifas 1.77%):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {+type ? (+type).toFixed(2) : "0.00"}
-          </td>
-        </tr>
-
-        <tr className="bg-gray-100 border-b border-gray-200">
-          <td className="px-4 py-4">
-            Darbo vietos kaina (darbdavio išlaidos):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {salary ? (salary + +type).toFixed(2) : "0.00"}
-          </td>
-        </tr>
-
-        <tr className="bg-gray-100 border-b border-gray-200 font-bold">
-          <td className="px-4 py-4">
-            Sodrai mokėtina suma, įmokos kodas 252 (
-            <a
-              className="text-blue-600/100 hover:underline hover:text-blue-800"
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.sodra.lt/surenkamosios-saskaitos"
-            >
-              Sodros sąskaitos
-            </a>
-            ):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {salary ? (+pensionType + +type).toFixed(2) : "0.00"}
-          </td>
-        </tr>
-
-        <tr className="bg-gray-100 border-b border-gray-200 font-bold">
-          <td className="px-4 py-4">
-            Mokesčių inspekcijai mokėtina suma, įmokos kodas 1411(
-            <a
-              className="text-blue-600/100 hover:underline hover:text-blue-800"
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.vmi.lt/evmi/"
-            >
-              VMI sąskaitos
-            </a>
-            ):
-          </td>
-          <td className="px-4 py-4 text-right">
-            {+gpmType < 0 ? "0.00" : salary ? (+gpmType).toFixed(2) : "0.00"}
-          </td>
-        </tr>
-      </table>
+      <Results
+        salary={salary}
+        gpmType={gpmType}
+        pensionType={pensionType}
+        type={type}
+      />
     </>
   );
 };

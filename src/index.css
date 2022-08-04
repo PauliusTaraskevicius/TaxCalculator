@@ -2,10 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 body {
   margin: 0;
 }
@@ -25,4 +21,3 @@ nav {
 .footer {
   background: linear-gradient(-120deg, #003087, #009cde, #012169)
 }
-
