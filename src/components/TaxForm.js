@@ -234,7 +234,7 @@ const TaxForm = () => {
                 type="number"
                 id="salary"
                 className="form-control py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
-                block w-full p-2.5 "
+                block w-full p-2.5"
                 placeholder="0.00"
                 onChange={(e) => setSalary(parseFloat(e.target.value))}
               />
@@ -250,7 +250,7 @@ const TaxForm = () => {
                 type="number hidden"
                 id="salary_to_hand"
                 className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
-                block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                block w-full p-2.5"
                 placeholder="0.00"
                 value={
                   salary <= 540
@@ -272,8 +272,7 @@ const TaxForm = () => {
               <input
                 type="number hidden"
                 id="work_space_price"
-                className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="0.00"
                 value={salary ? (salary + +type).toFixed(2) : "0.00"}
               />
@@ -287,8 +286,7 @@ const TaxForm = () => {
               </label>
               <select
                 id="npd"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={(e) => setGPM(e.target.value)}
               >
                 <option>Taikomas standartinis</option>
@@ -306,8 +304,7 @@ const TaxForm = () => {
               </label>
               <select
                 id="pension"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={(e) => setPension(e.target.value)}
               >
                 <option>Nekaupia</option>
@@ -324,8 +321,7 @@ const TaxForm = () => {
               </label>
               <select
                 id="contractType"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={changeContractHandler}
               >
                 <option>Neterminuota</option>
@@ -342,8 +338,7 @@ const TaxForm = () => {
               </label>
               <select
                 id="employerType"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={changeEmployerTypeHandler}
               >
                 <option>Privatus</option>
@@ -364,8 +359,7 @@ const TaxForm = () => {
               </label>
               <select
                 id="employerGroup"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={changeGroupHandler}
               >
                 <option>I grupė</option>
@@ -384,8 +378,7 @@ const TaxForm = () => {
               </label>
               <select
                 id="years"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
-                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="2022">2022</option>
               </select>
