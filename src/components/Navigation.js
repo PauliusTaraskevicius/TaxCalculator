@@ -8,6 +8,8 @@ const Navigation = () => {
           <div className="flex space-x-7">
             <div>
               <a
+                target="_blank"
+                rel="noreferrer"
                 href="https://www.kaip-uzsidirbti.lt"
                 className="flex items-center py-4 px-2"
               >
