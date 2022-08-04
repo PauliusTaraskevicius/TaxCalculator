@@ -226,14 +226,14 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="salary"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Ant popieriaus
               </label>
               <input
                 type="number"
                 id="salary"
-                className="form-control py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
+                className="form-control py-4 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                 block w-full p-2.5"
                 placeholder="0.00"
                 onChange={(e) => setSalary(parseFloat(e.target.value))}
@@ -242,14 +242,14 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="salary_to_hand"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Į rankas
               </label>
               <input
                 type="number hidden"
                 id="salary_to_hand"
-                className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
+                className="inputField py-4 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                 block w-full p-2.5"
                 placeholder="0.00"
                 value={
@@ -265,14 +265,14 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="work_space_price"
-                className="block mb-2  px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2  px-1 text-sm font-medium"
               >
                 Darbo vietos kaina
               </label>
               <input
                 type="number hidden"
                 id="work_space_price"
-                className="inputField py-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="inputField py-4 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="0.00"
                 value={salary ? (salary + +type).toFixed(2) : "0.00"}
               />
@@ -280,13 +280,13 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="npd"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Neapmokestinamas pajamų dydis
               </label>
               <select
                 id="npd"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={(e) => setGPM(e.target.value)}
               >
                 <option>Taikomas standartinis</option>
@@ -298,13 +298,13 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="pension"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Papildomas pensijos kaupimas
               </label>
               <select
                 id="pension"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={(e) => setPension(e.target.value)}
               >
                 <option>Nekaupia</option>
@@ -315,13 +315,13 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="contractType"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Sutarties tipas
               </label>
               <select
                 id="contractType"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={changeContractHandler}
               >
                 <option>Neterminuota</option>
@@ -332,13 +332,13 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="employerType"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Darbdavio tipas
               </label>
               <select
                 id="employerType"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={changeEmployerTypeHandler}
               >
                 <option>Privatus</option>
@@ -353,13 +353,13 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="employerGroup"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Darbdavio grupė
               </label>
               <select
                 id="employerGroup"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 onChange={changeGroupHandler}
               >
                 <option>I grupė</option>
@@ -372,13 +372,13 @@ const TaxForm = () => {
             <div>
               <label
                 htmlFor="years"
-                className="block mb-2 px-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="block mb-2 px-1 text-sm font-medium"
               >
                 Metai
               </label>
               <select
                 id="years"
-                className="block py-4 p-2 mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                className="block py-4 p-2 mb-6 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="2022">2022</option>
               </select>
